@@ -1,0 +1,44 @@
+@import url("app.css");
+
+.hms-split {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .hms-split--reg {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+.hms-photo-card {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.hms-photo-card .hms-btn {
+  width: 100%;
+  margin-top: var(--space-3);
+  background: var(--color-on-primary);
+  color: var(--color-primary-container);
+}
+
+.hms-preview-row {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .hms-preview-row {
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+}
+
+.hms-icon-xl {
+  font-size: 3rem;
+}

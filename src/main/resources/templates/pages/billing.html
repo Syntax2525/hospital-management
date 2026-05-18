@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billing — MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/billing.css" />
+</head>
+<body data-page="billing">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="hms-top-accent"></div>
+  <aside class="hms-sidebar" id="hms-sidebar" aria-label="Primary navigation"></aside>
+  <div class="hms-sidebar-backdrop" id="hms-sidebar-backdrop"></div>
+  <div class="hms-shell">
+    <header class="hms-topbar">
+      <div class="hms-topbar__left">
+        <button type="button" class="hms-menu-toggle" id="hms-menu-toggle" aria-label="Open navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="hms-search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <label class="visually-hidden" for="global-search">Search</label>
+          <input type="search" id="global-search" placeholder="Search invoice or patient…" />
+        </div>
+      </div>
+      <h1 class="hms-page-title" id="hms-page-title">Billing</h1>
+      <div class="hms-topbar__actions">
+        <div class="hms-notify-wrap">
+          <button type="button" class="hms-icon-btn" id="hms-notify-btn">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="hms-badge-dot" aria-hidden="true"></span>
+          </button>
+          <div class="hms-notify-panel" id="hms-notify-panel" role="region" aria-label="Notifications">
+            <h3>Notifications</h3>
+            <div class="hms-notify-item">Invoice #4402 ready for review.</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="hms-main">
+      <section class="hms-card">
+        <h2 class="hms-title">Invoice preview</h2>
+        <p><strong id="bill-patient-name">Patient</strong></p>
+        <p class="hms-muted" id="bill-patient-id"></p>
+        <div id="bill-lines" class="hms-invoice-summary hms-section-gap"></div>
+        <div class="hms-invoice-total" id="bill-total">$0.00</div>
+        <div class="hms-btn-group hms-section-gap">
+          <button type="button" class="hms-btn hms-btn--primary" id="bill-generate">Generate bill</button>
+          <a class="hms-btn hms-btn--ghost" href="patients.html">Back to patients</a>
+        </div>
+      </section>
+    </main>
+    <footer class="hms-footer">
+      <p>© MediFlow HMS · Billing</p>
+    </footer>
+  </div>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/billing.js" defer></script>
+</body>
+</html>

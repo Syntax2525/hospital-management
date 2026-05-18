@@ -1,0 +1,75 @@
+@import url("app.css");
+
+.hms-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.hms-segment {
+  display: flex;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-lowest);
+}
+
+.hms-segment button {
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: var(--color-secondary);
+  border-right: 1px solid var(--color-outline-variant);
+}
+
+.hms-segment button:last-child {
+  border-right: none;
+}
+
+.hms-segment button.is-active {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.hms-report-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.hms-bar-chart {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.hms-bar-chart span {
+  flex: 1;
+  background: var(--color-primary-container);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  opacity: 0.7;
+  min-height: 20%;
+}
+
+.hms-bar-chart span:nth-child(1) {
+  height: 45%;
+}
+.hms-bar-chart span:nth-child(2) {
+  height: 70%;
+}
+.hms-bar-chart span:nth-child(3) {
+  height: 55%;
+}
+.hms-bar-chart span:nth-child(4) {
+  height: 90%;
+}
+.hms-bar-chart span:nth-child(5) {
+  height: 35%;
+}

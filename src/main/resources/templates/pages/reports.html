@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reports â€” MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/reports.css" />
+</head>
+<body data-page="reports">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="hms-top-accent"></div>
+  <aside class="hms-sidebar" id="hms-sidebar" aria-label="Primary navigation"></aside>
+  <div class="hms-sidebar-backdrop" id="hms-sidebar-backdrop"></div>
+  <div class="hms-shell">
+    <header class="hms-topbar">
+      <div class="hms-topbar__left">
+        <button type="button" class="hms-menu-toggle" id="hms-menu-toggle" aria-label="Open navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="hms-search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <label class="visually-hidden" for="global-search">Search</label>
+          <input type="search" id="global-search" placeholder="Search analyticsâ€¦" />
+        </div>
+      </div>
+      <h1 class="hms-page-title" id="hms-page-title">Reports</h1>
+      <div class="hms-topbar__actions">
+        <div class="hms-notify-wrap">
+          <button type="button" class="hms-icon-btn" id="hms-notify-btn">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div class="hms-notify-panel" id="hms-notify-panel" role="region" aria-label="Notifications">
+            <h3>Notifications</h3>
+            <div class="hms-notify-item">Loading notifications...</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="hms-main">
+      <div class="hms-card-head">
+        <div>
+          <h2 class="hms-display">Analytical overview</h2>
+          <p class="hms-muted">Clinical and financial performance from the database.</p>
+        </div>
+        <div class="hms-filter-bar">
+          <div class="hms-segment" role="group" aria-label="Date range">
+            <button type="button">D</button>
+            <button type="button">W</button>
+            <button type="button" class="is-active">M</button>
+            <button type="button">Y</button>
+          </div>
+          <button type="button" class="hms-btn hms-btn--ghost" id="report-export-pdf">
+            <span class="material-symbols-outlined">picture_as_pdf</span> Export PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="hms-report-grid hms-section-gap">
+        <article class="hms-card">
+          <h3 class="hms-title">Admissions trend</h3>
+          <div class="hms-bar-chart" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </article>
+        <article class="hms-card">
+          <h3 class="hms-title">Revenue by department</h3>
+          <p class="hms-muted">Loading invoices...</p>
+          <p class="hms-stat__value">\$842k.00.00</p>
+        </article>
+        <article class="hms-card">
+          <h3 class="hms-title">Average LOS</h3>
+          <p class="hms-stat__value">0 beds</p>
+          <p class="hms-muted">Loading capacity...</p>
+        </article>
+      </div>
+    </main>
+    <footer class="hms-footer">
+      <p>Â© MediFlow HMS Â· Reports</p>
+    </footer>
+  </div>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/reports.js" defer></script>
+</body>
+</html>
+
+

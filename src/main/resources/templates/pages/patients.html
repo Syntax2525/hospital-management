@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patients — MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/patients.css" />
+</head>
+<body data-page="patients">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="hms-top-accent"></div>
+  <aside class="hms-sidebar" id="hms-sidebar" aria-label="Primary navigation"></aside>
+  <div class="hms-sidebar-backdrop" id="hms-sidebar-backdrop"></div>
+  <div class="hms-shell">
+    <header class="hms-topbar">
+      <div class="hms-topbar__left">
+        <button type="button" class="hms-menu-toggle" id="hms-menu-toggle" aria-label="Open navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="hms-search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <label class="visually-hidden" for="global-search">Search</label>
+          <input type="search" id="global-search" placeholder="Search patients…" autocomplete="off" />
+        </div>
+      </div>
+      <h1 class="hms-page-title" id="hms-page-title">Patients</h1>
+      <div class="hms-topbar__actions">
+        <div class="hms-notify-wrap">
+          <button type="button" class="hms-icon-btn" id="hms-notify-btn" aria-expanded="false">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="hms-badge-dot" aria-hidden="true"></span>
+          </button>
+          <div class="hms-notify-panel" id="hms-notify-panel" role="region" aria-label="Notifications">
+            <h3>Notifications</h3>
+            <div class="hms-notify-item">New registration pending insurance.</div>
+            <div class="hms-notify-item">Triage queue updated.</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="hms-main">
+      <header class="hms-card-head">
+        <div>
+          <h2 class="hms-display">Patient directory</h2>
+          <p class="hms-muted">View, edit, consult, bill, or send lab orders. Selection is stored for other modules.</p>
+        </div>
+      </header>
+
+      <article id="patient-detail" class="hms-card hms-section-gap" hidden>
+        <h2 class="hms-title" id="detail-name">Patient</h2>
+        <p class="hms-muted" id="detail-meta"></p>
+        <p><span class="hms-label">Phone</span> <span id="detail-phone"></span></p>
+        <p><span class="hms-label">Allergies</span> <span id="detail-allergies"></span></p>
+        <div class="hms-btn-group">
+          <button type="button" class="hms-btn hms-btn--primary" id="detail-open-consult">Open consultation</button>
+          <button type="button" class="hms-btn hms-btn--secondary" id="detail-view-lab">View lab queue</button>
+        </div>
+      </article>
+
+      <section class="hms-card hms-section-gap" aria-labelledby="dir-heading">
+        <h2 id="dir-heading" class="hms-title">Active patients</h2>
+        <div class="hms-table-wrap">
+          <table class="hms-table" id="patient-table">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="hms-split hms-split--reg hms-section-gap">
+        <section class="hms-card">
+          <h2 class="hms-title" id="reg-heading">New registration</h2>
+          <form id="patient-register-form" method="post" action="#">
+            <div class="hms-form-row hms-form-row--2">
+              <div class="hms-field">
+                <label for="reg-name">Full name</label>
+                <input class="hms-input" id="reg-name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="hms-field">
+                <label for="reg-gender">Gender</label>
+                <select class="hms-select" id="reg-gender" name="gender">
+                  <option value="">Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="hms-form-row hms-form-row--2">
+              <div class="hms-field">
+                <label for="reg-age">Age</label>
+                <input class="hms-input" id="reg-age" name="age" type="number" min="0" max="130" />
+              </div>
+              <div class="hms-field">
+                <label for="reg-phone">Phone</label>
+                <input class="hms-input" id="reg-phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="hms-field">
+              <label for="reg-address">Address</label>
+              <input class="hms-input" id="reg-address" name="address" type="text" autocomplete="street-address" />
+            </div>
+            <div class="hms-field">
+              <label for="reg-insurance">Insurance</label>
+              <input class="hms-input" id="reg-insurance" name="insurance" type="text" />
+            </div>
+            <div class="hms-field">
+              <label for="reg-allergies">Allergies</label>
+              <textarea class="hms-textarea" id="reg-allergies" name="allergies" rows="3"></textarea>
+            </div>
+            <div class="hms-btn-group">
+              <button type="submit" class="hms-btn hms-btn--primary">
+                <span class="material-symbols-outlined">save</span> Submit registration
+              </button>
+            </div>
+          </form>
+        </section>
+        <aside class="hms-photo-card">
+          <span class="material-symbols-outlined hms-icon-xl" aria-hidden="true">add_a_photo</span>
+          <h3 class="hms-title">Patient photo</h3>
+          <p class="hms-muted">Upload a clear identification photo when hardware is connected.</p>
+          <button type="button" class="hms-btn">Capture photo</button>
+        </aside>
+      </div>
+    </main>
+    <footer class="hms-footer">
+      <p>© MediFlow HMS · Patients module</p>
+    </footer>
+  </div>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/patients.js" defer></script>
+</body>
+</html>

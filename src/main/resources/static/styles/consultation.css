@@ -1,0 +1,90 @@
+@import url("app.css");
+
+.hms-stack-col-sm label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 14px;
+}
+
+.hms-patient-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.hms-patient-banner__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.hms-pid {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: var(--color-surface-container);
+  border-radius: var(--radius-sm);
+  color: var(--color-secondary);
+}
+
+.hms-vitals-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-4);
+}
+
+.hms-vitals-row > div {
+  border-left: 1px solid var(--color-outline-variant);
+  padding-left: var(--space-3);
+}
+
+.hms-consult-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .hms-consult-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.hms-timeline {
+  position: relative;
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--color-outline-variant);
+}
+
+.hms-timeline__item {
+  position: relative;
+  padding-bottom: var(--space-6);
+}
+
+.hms-timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-5) - 5px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.hms-timeline__item.is-muted::before {
+  background: var(--color-outline-variant);
+}
+
+.hms-dx-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3);
+  background: var(--color-surface-low);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-md);
+}

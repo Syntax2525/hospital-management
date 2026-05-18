@@ -1,0 +1,142 @@
+@import url("app.css");
+
+/* Login page — centered layout, no app shell */
+body.hms-login-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  position: relative;
+}
+
+.hms-login-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hms-login-bg::before,
+.hms-login-bg::after {
+  content: "";
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.35;
+}
+
+.hms-login-bg::before {
+  background: var(--color-secondary-container);
+  bottom: -4rem;
+  right: -4rem;
+}
+
+.hms-login-bg::after {
+  background: var(--color-primary-container);
+  top: -4rem;
+  left: -4rem;
+  opacity: 0.2;
+}
+
+.hms-login {
+  width: 100%;
+  max-width: 440px;
+}
+
+.hms-login__header {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.hms-login__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+  background: #d7e2ff;
+  color: var(--color-primary);
+}
+
+.hms-login__logo .material-symbols-outlined {
+  font-size: 32px;
+}
+
+.hms-login__card {
+  background: var(--color-surface-lowest);
+  border: 1px solid #dee2e6;
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  box-shadow: var(--shadow-sm);
+}
+
+.hms-login__footer {
+  margin-top: var(--space-6);
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-on-surface-variant);
+}
+
+.hms-login__badges {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-outline);
+}
+
+.hms-input-wrap {
+  position: relative;
+}
+
+.hms-input-wrap .material-symbols-outlined {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-outline);
+  font-size: 20px;
+}
+
+.hms-input-wrap .hms-input {
+  padding-right: 2.75rem;
+}
+
+.hms-login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: 13px;
+}
+
+.hms-login-options label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  color: var(--color-secondary);
+}
+
+.hms-login__title-primary {
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.hms-login__options-spacing {
+  margin-bottom: var(--space-4);
+}
+
+.hms-btn--block {
+  width: 100%;
+}

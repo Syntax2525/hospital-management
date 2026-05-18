@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard â€” MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/dashboard.css" />
+</head>
+<body data-page="dashboard">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="hms-top-accent"></div>
+  <aside class="hms-sidebar" id="hms-sidebar" aria-label="Primary navigation"></aside>
+  <div class="hms-sidebar-backdrop" id="hms-sidebar-backdrop"></div>
+  <div class="hms-shell">
+    <header class="hms-topbar">
+      <div class="hms-topbar__left">
+        <button type="button" class="hms-menu-toggle" id="hms-menu-toggle" aria-label="Open navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="hms-search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <label class="visually-hidden" for="global-search">Search patients or records</label>
+          <input type="search" id="global-search" placeholder="Search patients or recordsâ€¦" autocomplete="off" />
+        </div>
+      </div>
+      <h1 class="hms-page-title" id="hms-page-title">Dashboard</h1>
+      <div class="hms-topbar__actions">
+        <div class="hms-notify-wrap">
+          <button type="button" class="hms-icon-btn" id="hms-notify-btn" aria-expanded="false" aria-controls="hms-notify-panel">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="hms-badge-dot" aria-hidden="true"></span>
+          </button>
+          <div class="hms-notify-panel" id="hms-notify-panel" role="region" aria-label="Notifications">
+            <h3>Notifications</h3>
+            <div class="hms-notify-item">Loading notifications...</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="hms-main">
+      <section class="hms-grid hms-grid--stats" aria-label="Key metrics">
+        <article class="hms-card">
+          <div class="hms-stat__value">0</div>
+          <div class="hms-stat__label">Total patients</div>
+        </article>
+        <article class="hms-card">
+          <div class="hms-stat__value">0</div>
+          <div class="hms-stat__label">Appointments today</div>
+        </article>
+        <article class="hms-card">
+          <div class="hms-stat__value">0</div>
+          <div class="hms-stat__label">Available beds</div>
+        </article>
+        <article class="hms-card">
+          <div class="hms-stat__value">$0.00</div>
+          <div class="hms-stat__label">Revenue (MTD)</div>
+        </article>
+      </section>
+
+      <section class="hms-bento hms-section-gap">
+        <article class="hms-card">
+          <div class="hms-card-head">
+            <h2 class="hms-title hms-title--flat">Weekly patient visits</h2>
+            <div class="hms-btn-group">
+              <span class="hms-chip hms-chip--success">Inpatient</span>
+              <span class="hms-chip hms-chip--primary-fill">Outpatient</span>
+            </div>
+          </div>
+          <div class="hms-chart" aria-hidden="true">
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+            <div class="hms-chart__bar"><div class="hms-chart__bar-inner"></div></div>
+          </div>
+          <div class="hms-chart__labels">
+            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+        </article>
+        <div class="hms-stack-col">
+          <article class="hms-card">
+            <h2 class="hms-title">Quick actions</h2>
+            <div class="hms-stack-col-sm">
+              <button type="button" class="hms-btn hms-btn--primary" id="qa-register">
+                <span class="material-symbols-outlined">person_add</span> Register patient
+              </button>
+              <button type="button" class="hms-btn hms-btn--secondary" id="qa-appointment">
+                <span class="material-symbols-outlined">add_task</span> Book appointment
+              </button>
+              <button type="button" class="hms-btn hms-btn--ghost" id="qa-lab">
+                <span class="material-symbols-outlined">microscope</span> View lab results
+              </button>
+            </div>
+          </article>
+          <article class="hms-alert-banner" id="card-emergency" role="button" tabindex="0">
+            <div class="hms-alert-banner__inner">
+              <h3 class="hms-title">Emergency alert</h3>
+              <p class="hms-muted">Open the live triage workspace.</p>
+            </div>
+            <span class="material-symbols-outlined" aria-hidden="true">emergency</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="hms-card hms-section-gap">
+        <div class="hms-activity-head">
+          <h2 class="hms-title hms-title--flat">Recent activities</h2>
+          <button type="button" class="hms-btn hms-btn--ghost" id="activity-view-all">View all</button>
+        </div>
+        <div class="hms-activity">`r`n          <div class="hms-activity__row"><p class="hms-muted">Loading database activity...</p></div>`r`n        </div>`r`n      </section>
+
+      <div class="hms-legend" aria-label="Status legend">
+        <span class="hms-chip hms-chip--success">Stable</span>
+        <span class="hms-chip hms-chip--warn">Observation</span>
+        <span class="hms-chip hms-chip--error">Critical</span>
+        <span class="hms-chip hms-chip--neutral">Discharged</span>
+      </div>
+    </main>
+    <footer class="hms-footer">
+      <p>Â© MediFlow HMS Â· General Hospital Â· Internal use only</p>
+    </footer>
+  </div>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/dashboard.js" defer></script>
+</body>
+</html>
+

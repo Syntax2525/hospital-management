@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body class="hms-login-body">
+  <div class="hms-login-bg" aria-hidden="true"></div>
+  <div class="hms-top-accent"></div>
+  <main class="hms-login">
+    <header class="hms-login__header">
+      <div class="hms-login__logo" aria-hidden="true">
+        <span class="material-symbols-outlined">medical_services</span>
+      </div>
+      <h1 class="hms-display hms-login__title-primary">MediFlow HMS</h1>
+      <p class="hms-muted">General Hospital Information System</p>
+    </header>
+    <section class="hms-login__card" aria-labelledby="login-heading">
+      <h2 id="login-heading" class="hms-headline">Welcome back</h2>
+      <p class="hms-muted hms-login__lead">Enter your credentials to access the portal.</p>
+      <form id="login-form" method="post" action="#">
+        <div class="hms-field">
+          <label for="email">Email address</label>
+          <div class="hms-input-wrap">
+            <input class="hms-input" type="email" id="email" name="email" autocomplete="email" required />
+            <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+          </div>
+        </div>
+        <div class="hms-field">
+          <label for="password">Password</label>
+          <div class="hms-input-wrap">
+            <input class="hms-input" type="password" id="password" name="password" autocomplete="current-password" required />
+            <span class="material-symbols-outlined" aria-hidden="true">lock</span>
+          </div>
+        </div>
+        <div class="hms-login-options hms-login__options-spacing">
+          <label><input type="checkbox" name="remember" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button class="hms-btn hms-btn--primary hms-btn--block" type="submit">
+          Login <span class="material-symbols-outlined" aria-hidden="true">login</span>
+        </button>
+      </form>
+    </section>
+    <footer class="hms-login__footer">
+      <p>Need assistance? <a href="#">Contact IT Support</a></p>
+      <div class="hms-login__badges" aria-hidden="true">
+        <span>HIPAA COMPLIANT</span>
+        <span>•</span>
+        <span>ENCRYPTED DATA</span>
+      </div>
+    </footer>
+  </main>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/index.js" defer></script>
+</body>
+</html>

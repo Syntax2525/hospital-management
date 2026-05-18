@@ -1,0 +1,10 @@
+package com.hospitalmanagement.repository;
+
+import com.hospitalmanagement.model.StaffUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface StaffUserRepository extends JpaRepository<StaffUser, Long> {
+    Optional<StaffUser> findByEmailIgnoreCase(String email);
+}

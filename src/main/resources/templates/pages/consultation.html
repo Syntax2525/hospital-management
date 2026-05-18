@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultation â€” MediFlow HMS</title>
+  <link rel="stylesheet" href="styles/consultation.css" />
+</head>
+<body data-page="consultation">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="hms-top-accent"></div>
+  <aside class="hms-sidebar" id="hms-sidebar" aria-label="Primary navigation"></aside>
+  <div class="hms-sidebar-backdrop" id="hms-sidebar-backdrop"></div>
+  <div class="hms-shell">
+    <header class="hms-topbar">
+      <div class="hms-topbar__left">
+        <button type="button" class="hms-menu-toggle" id="hms-menu-toggle" aria-label="Open navigation menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="hms-search">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <label class="visually-hidden" for="global-search">Search</label>
+          <input type="search" id="global-search" placeholder="Search recordsâ€¦" />
+        </div>
+      </div>
+      <h1 class="hms-page-title" id="hms-page-title">Consultation</h1>
+      <div class="hms-topbar__actions">
+        <div class="hms-notify-wrap">
+          <button type="button" class="hms-icon-btn" id="hms-notify-btn">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="hms-badge-dot" aria-hidden="true"></span>
+          </button>
+          <div class="hms-notify-panel" id="hms-notify-panel" role="region" aria-label="Notifications">
+            <h3>Notifications</h3>
+            <div class="hms-notify-item">Loading notifications...</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="hms-main">
+      <section class="hms-card hms-patient-banner" aria-labelledby="consult-patient-name">
+        <div class="hms-btn-group">
+          <div class="hms-avatar" aria-hidden="true"><span class="material-symbols-outlined">person</span></div>
+          <div>
+            <h2 id="consult-patient-name" class="hms-headline">Loadingâ€¦</h2>
+            <div id="consult-patient-meta" class="hms-patient-banner__meta"></div>
+          </div>
+        </div>
+        <p class="hms-muted" id="consult-vitals">Vitals will appear here after triage capture.</p>
+        <span class="hms-chip hms-chip--success">Stable</span>
+      </section>
+
+      <div class="hms-consult-grid hms-section-gap">
+        <div class="hms-stack-col">
+          <section class="hms-card">
+            <label class="hms-title" for="clinical-notes">Clinical notes</label>
+            <textarea class="hms-textarea" id="clinical-notes" rows="8" placeholder="History, examination, planâ€¦"></textarea>
+          </section>
+          <section class="hms-card">
+            <h3 class="hms-title">Diagnosis (ICD-10)</h3>
+            <div class="hms-field">
+              <label for="icd-search">Search codes</label>
+              <input class="hms-input" id="icd-search" type="search" placeholder="e.g. I10 hypertension" />
+            </div>
+            <div class="hms-dx-row">
+              <span><strong>I10</strong> â€” Essential hypertension</span>
+              <button type="button" class="hms-icon-btn" aria-label="Remove diagnosis">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="hms-stack-col">
+          <section class="hms-card">
+            <h3 class="hms-title">Prescription</h3>
+            <p class="hms-muted">Prescription items are saved with the consultation request.</p>
+          </section>
+          <section class="hms-card">
+            <h3 class="hms-title">Lab requests</h3>
+            <fieldset class="hms-stack-col-sm">
+              <legend class="visually-hidden">Select laboratory panels</legend>
+              <label><input type="checkbox" class="lab-check" value="Complete Blood Count (CBC)" checked /> Complete Blood Count (CBC)</label>
+              <label><input type="checkbox" class="lab-check" value="Lipid profile" /> Lipid profile</label>
+              <label><input type="checkbox" class="lab-check" value="Chest X-Ray (AP)" /> Chest X-Ray (AP)</label>
+            </fieldset>
+            <div class="hms-btn-group hms-section-gap">
+              <button type="button" class="hms-btn hms-btn--secondary" id="consult-open-lab">Open laboratory</button>
+            </div>
+          </section>
+          <div class="hms-btn-group">
+            <button type="button" class="hms-btn hms-btn--primary" id="consult-save">
+              <span class="material-symbols-outlined">save</span> Save consultation
+            </button>
+            <button type="button" class="hms-btn hms-btn--ghost">Print prescription</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="hms-section-gap" aria-labelledby="timeline-heading">
+        <h3 id="timeline-heading" class="hms-title">Recent activity</h3>
+        <div class="hms-timeline">`r`n          <div class="hms-timeline__item"><p class="hms-muted">Recent activity is loaded from saved clinical records.</p></div>`r`n        </div>`r`n      </section>
+    </main>
+    <footer class="hms-footer">
+      <p>Â© MediFlow HMS Â· Consultation</p>
+    </footer>
+  </div>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/consultation.js" defer></script>
+</body>
+</html>
+
+
