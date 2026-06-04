@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(function (session) {
         localStorage.setItem(HMS.KEYS.session, JSON.stringify(Object.assign({ loggedIn: true }, session)));
         HMS.showToast("Signed in successfully.", "success");
-        window.location.href = "dashboard.html";
+        window.location.href = session.dashboardUrl || HMS.dashboardForRole(session.role);
       })
       .catch(function (err) {
         HMS.showToast(err.message || "Login failed.", "error");

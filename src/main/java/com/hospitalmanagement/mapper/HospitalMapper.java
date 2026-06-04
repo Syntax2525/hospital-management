@@ -1,7 +1,20 @@
 package com.hospitalmanagement.mapper;
 
 import com.hospitalmanagement.dto.*;
-import com.hospitalmanagement.model.*;
+import com.hospitalmanagement.model.Allergy;
+import com.hospitalmanagement.model.Appointment;
+import com.hospitalmanagement.model.Bed;
+import com.hospitalmanagement.model.Invoice;
+import com.hospitalmanagement.model.LabOrder;
+import com.hospitalmanagement.model.LabResult;
+import com.hospitalmanagement.model.Medication;
+import com.hospitalmanagement.model.Notification;
+import com.hospitalmanagement.model.Patient;
+import com.hospitalmanagement.model.Prescription;
+import com.hospitalmanagement.model.PrescriptionItem;
+import com.hospitalmanagement.model.StaffUser;
+import com.hospitalmanagement.model.Ward;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;

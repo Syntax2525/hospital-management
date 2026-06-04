@@ -7,6 +7,7 @@ public record AuthSessionResponse(
         String displayName,
         UserRole role,
         String email,
-        String token
+        String token,
+        String dashboardUrl
 ) {
 }

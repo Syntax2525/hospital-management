@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Consultation â€” MediFlow HMS</title>
+  <title>Consultation MediFlow HMS</title>
   <link rel="stylesheet" href="styles/consultation.css" />
 </head>
 <body data-page="consultation">
@@ -42,7 +42,7 @@
         <div class="hms-btn-group">
           <div class="hms-avatar" aria-hidden="true"><span class="material-symbols-outlined">person</span></div>
           <div>
-            <h2 id="consult-patient-name" class="hms-headline">Loadingâ€¦</h2>
+            <h2 id="consult-patient-name" class="hms-headline">Loading</h2>
             <div id="consult-patient-meta" class="hms-patient-banner__meta"></div>
           </div>
         </div>
@@ -63,7 +63,7 @@
               <input class="hms-input" id="icd-search" type="search" placeholder="e.g. I10 hypertension" />
             </div>
             <div class="hms-dx-row">
-              <span><strong>I10</strong> â€” Essential hypertension</span>
+              <span><strong>I10</strong> Essential hypertension</span>
               <button type="button" class="hms-icon-btn" aria-label="Remove diagnosis">
                 <span class="material-symbols-outlined">close</span>
               </button>
@@ -98,10 +98,13 @@
 
       <section class="hms-section-gap" aria-labelledby="timeline-heading">
         <h3 id="timeline-heading" class="hms-title">Recent activity</h3>
-        <div class="hms-timeline">`r`n          <div class="hms-timeline__item"><p class="hms-muted">Recent activity is loaded from saved clinical records.</p></div>`r`n        </div>`r`n      </section>
+        <div class="hms-timeline">n          
+		<div class="hms-timeline__item">
+		<p class="hms-muted">Recent activity is loaded from saved clinical records.</p>
+	</div>n</div>n</section>
     </main>
     <footer class="hms-footer">
-      <p>Â© MediFlow HMS Â· Consultation</p>
+      <p>© MediFlow HMS · Consultation</p>
     </footer>
   </div>
   <script src="scripts/app.js" defer></script>

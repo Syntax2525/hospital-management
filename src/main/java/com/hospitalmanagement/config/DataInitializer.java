@@ -73,6 +73,11 @@ public class DataInitializer {
                 user.setDepartment(general);
                 return staffUsers.save(user);
             });
+            seedUser(staffUsers, passwordEncoder, general, "Nurse Amina Yusuf", "nurse@mediflow.local", "nurse123", UserRole.NURSE);
+            seedUser(staffUsers, passwordEncoder, general, "Liam Carter", "lab@mediflow.local", "labtech123", UserRole.LAB_TECHNICIAN);
+            seedUser(staffUsers, passwordEncoder, general, "Priya Shah", "pharmacy@mediflow.local", "pharmacist123", UserRole.PHARMACIST);
+            seedUser(staffUsers, passwordEncoder, general, "Grace Mwinyi", "billing@mediflow.local", "billing123", UserRole.BILLING);
+            seedUser(staffUsers, passwordEncoder, general, "Noah Reed", "reception@mediflow.local", "reception123", UserRole.RECEPTIONIST);
 
             seedAllergy(allergies, "Penicillin");
             seedAllergy(allergies, "Latex");
@@ -176,6 +181,20 @@ public class DataInitializer {
             medication.setUnitPrice(price);
             medication.setInventoryStatus(stock <= 20 ? InventoryStatus.LOW_STOCK : InventoryStatus.IN_STOCK);
             return medications.save(medication);
+        });
+    }
+
+    private void seedUser(StaffUserRepository staffUsers, PasswordEncoder passwordEncoder, Department department,
+                          String fullName, String email, String password, UserRole role) {
+        staffUsers.findByEmailIgnoreCase(email).orElseGet(() -> {
+            StaffUser user = new StaffUser();
+            user.setFullName(fullName);
+            user.setEmail(email);
+            user.setPasswordHash(passwordEncoder.encode(password));
+            user.setRole(role);
+            user.setStatus(AccountStatus.ACTIVE);
+            user.setDepartment(department);
+            return staffUsers.save(user);
         });
     }
 }

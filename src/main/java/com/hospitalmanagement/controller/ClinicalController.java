@@ -4,12 +4,15 @@ import com.hospitalmanagement.dto.*;
 import com.hospitalmanagement.response.ApiResponse;
 import com.hospitalmanagement.service.HospitalService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/api/clinical")
 public class ClinicalController {
     private final HospitalService service;
@@ -39,7 +42,7 @@ public class ClinicalController {
     }
 
     @DeleteMapping("/appointments/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteAppointment(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteAppointment(@PathVariable @Positive Long id) {
         service.deleteAppointment(id);
         return ResponseEntity.ok(ApiResponse.ok(null));
     }
@@ -55,7 +58,7 @@ public class ClinicalController {
     }
 
     @PostMapping("/lab-order-items/{id}/result")
-    public ApiResponse<LabResultResponse> publishResult(@PathVariable Long id) {
+    public ApiResponse<LabResultResponse> publishResult(@PathVariable @Positive Long id) {
         return ApiResponse.ok(service.publishDemoResult(id));
     }
 

@@ -4,12 +4,15 @@ import com.hospitalmanagement.dto.*;
 import com.hospitalmanagement.response.ApiResponse;
 import com.hospitalmanagement.service.HospitalService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/api")
 public class AdminController {
     private final HospitalService service;
@@ -39,12 +42,12 @@ public class AdminController {
     }
 
     @PutMapping("/pharmacy/medications/{id}")
-    public ApiResponse<MedicationResponse> medication(@PathVariable Long id, @Valid @RequestBody MedicationRequest request) {
+    public ApiResponse<MedicationResponse> medication(@PathVariable @Positive Long id, @Valid @RequestBody MedicationRequest request) {
         return ApiResponse.ok(service.updateMedication(id, request));
     }
 
     @DeleteMapping("/pharmacy/medications/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteMedication(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteMedication(@PathVariable @Positive Long id) {
         service.deleteMedication(id);
         return ResponseEntity.ok(ApiResponse.ok(null));
     }
@@ -69,14 +72,19 @@ public class AdminController {
         return ResponseEntity.status(201).body(ApiResponse.created(service.createStaff(request)));
     }
 
+    @PutMapping("/users/{id}")
+    public ApiResponse<StaffUserResponse> user(@PathVariable @Positive Long id, @Valid @RequestBody StaffUserUpdateRequest request) {
+        return ApiResponse.ok(service.updateStaff(id, request));
+    }
+
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable @Positive Long id) {
         service.deleteStaff(id);
         return ResponseEntity.ok(ApiResponse.ok(null));
     }
 
     @DeleteMapping("/notifications/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteNotification(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> deleteNotification(@PathVariable @Positive Long id) {
         service.deleteNotification(id);
         return ResponseEntity.ok(ApiResponse.ok(null));
     }
@@ -84,5 +92,10 @@ public class AdminController {
     @GetMapping("/reports/summary")
     public ApiResponse<ReportSummaryResponse> reportSummary() {
         return ApiResponse.ok(service.reportSummary());
+    }
+
+    @GetMapping("/settings")
+    public ApiResponse<HospitalSettingsResponse> settings() {
+        return ApiResponse.ok(service.hospitalSettings());
     }
 }

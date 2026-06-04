@@ -7,11 +7,13 @@ import com.hospitalmanagement.response.ApiResponse;
 import com.hospitalmanagement.service.HospitalService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/api/billing")
 public class BillingController {
     private final HospitalService service;

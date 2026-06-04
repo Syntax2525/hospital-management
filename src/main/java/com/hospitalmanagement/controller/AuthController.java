@@ -6,9 +6,11 @@ import com.hospitalmanagement.response.ApiResponse;
 import com.hospitalmanagement.service.HospitalService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Validated
 @RequestMapping("/api/auth")
 public class AuthController {
     private final HospitalService service;

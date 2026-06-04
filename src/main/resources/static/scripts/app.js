@@ -19,6 +19,36 @@
     { id: "users", href: "users.html", icon: "manage_accounts", label: "User Management" },
   ];
 
+  var ROLE_PAGES = {
+    ADMIN: ["dashboard", "reports", "users"],
+    RECEPTIONIST: ["dashboard", "patients"],
+    DOCTOR: ["dashboard", "patients", "consultation", "lab"],
+    NURSE: ["dashboard", "patients", "triage"],
+    LAB_TECHNICIAN: ["dashboard", "lab"],
+    PHARMACIST: ["dashboard", "pharmacy"],
+    BILLING: ["dashboard", "billing"],
+  };
+
+  var ROLE_DASHBOARD_TITLE = {
+    ADMIN: "Admin Dashboard",
+    RECEPTIONIST: "Receptionist Dashboard",
+    DOCTOR: "Doctor Dashboard",
+    NURSE: "Nurse Dashboard",
+    LAB_TECHNICIAN: "Laboratory Dashboard",
+    PHARMACIST: "Pharmacy Dashboard",
+    BILLING: "Billing Dashboard",
+  };
+
+  var ROLE_DASHBOARD_URL = {
+    ADMIN: "dashboard.html?role=admin",
+    RECEPTIONIST: "dashboard.html?role=receptionist",
+    DOCTOR: "dashboard.html?role=doctor",
+    NURSE: "dashboard.html?role=nurse",
+    LAB_TECHNICIAN: "dashboard.html?role=laboratory",
+    PHARMACIST: "dashboard.html?role=pharmacy",
+    BILLING: "dashboard.html?role=billing",
+  };
+
   var DOC_TITLES = {
     dashboard: "Dashboard - MediFlow HMS",
     patients: "Patients - MediFlow HMS",
@@ -68,6 +98,9 @@
   }
 
   function api(path, options) {
+    if (document.body && document.body.getAttribute("data-access-denied") === "true") {
+      return Promise.reject(new Error("Access Denied"));
+    }
     options = options || {};
     options.headers = Object.assign(authHeaders(), options.headers || {});
     return fetch(path, options).then(function (res) {
@@ -76,7 +109,10 @@
         return { success: res.ok, message: res.statusText };
       }).then(function (body) {
         if (!res.ok || body.success === false) {
-          throw new Error(body.message || "Request failed.");
+          var err = new Error(body.message || "Request failed.");
+          err.status = res.status;
+          if (res.status === 403) showAccessDenied(body.message || "Access Denied");
+          throw err;
         }
         return body.data;
       });
@@ -140,6 +176,40 @@
       return false;
     }
     return true;
+  }
+
+  function normalizeRole(role) {
+    return String(role || "").toUpperCase();
+  }
+
+  function dashboardForRole(role) {
+    return ROLE_DASHBOARD_URL[normalizeRole(role)] || "dashboard.html";
+  }
+
+  function hasPageAccess(page) {
+    var session = getSession();
+    var role = normalizeRole(session && session.role);
+    return (ROLE_PAGES[role] || []).indexOf(page) >= 0;
+  }
+
+  function showAccessDenied(message) {
+    ensureHosts();
+    if (document.body) document.body.setAttribute("data-access-denied", "true");
+    showToast(message || "Access Denied", "error", 6000);
+    var main = document.getElementById("main");
+    if (main) {
+      main.innerHTML =
+        '<section class="hms-card" role="alert">' +
+        '<h2 class="hms-title">Access Denied</h2>' +
+        '<p class="hms-muted">You do not have permission to access this feature.</p>' +
+        '<button type="button" class="hms-btn hms-btn--primary" id="hms-denied-home">Go to dashboard</button>' +
+        '</section>';
+      var btn = document.getElementById("hms-denied-home");
+      if (btn) btn.addEventListener("click", function () {
+        var s = getSession();
+        window.location.href = dashboardForRole(s && s.role);
+      });
+    }
   }
 
   function ensureHosts() {
@@ -230,7 +300,10 @@
     var name = session && session.displayName ? session.displayName : "User";
     var role = session && session.role ? session.role : "Authenticated";
     var initials = name.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase() || "HM";
-    var links = NAV.map(function (item) {
+    var allowed = ROLE_PAGES[normalizeRole(role)] || [];
+    var links = NAV.filter(function (item) {
+      return allowed.indexOf(item.id) >= 0;
+    }).map(function (item) {
       var active = item.id === activeId ? " is-active" : "";
       return '<a class="hms-nav__link' + active + '" href="' + item.href + '" data-nav="' + item.id + '">' +
         '<span class="material-symbols-outlined">' + item.icon + "</span>" + item.label + "</a>";
@@ -287,12 +360,26 @@
     if (DOC_TITLES[page]) document.title = DOC_TITLES[page];
     var h = document.getElementById("hms-page-title");
     if (h && HEADINGS[page]) h.textContent = HEADINGS[page];
+    if (page === "dashboard") {
+      var session = getSession();
+      var title = ROLE_DASHBOARD_TITLE[normalizeRole(session && session.role)];
+      if (title) {
+        document.title = title + " - MediFlow HMS";
+        if (h) h.textContent = title;
+      }
+    }
   }
 
   function initAppShell() {
     var page = document.body.getAttribute("data-page");
     if (!page) return;
     if (!requireAuth()) return;
+    if (!hasPageAccess(page)) {
+      renderSidebar("dashboard");
+      setPageMeta(page);
+      showAccessDenied("Access Denied");
+      return;
+    }
     renderSidebar(page);
     setPageMeta(page);
     wireMobileNav();
@@ -323,6 +410,9 @@
     toPatientUi: toPatientUi,
     loadPatients: loadPatients,
     initAppShell: initAppShell,
+    hasPageAccess: hasPageAccess,
+    showAccessDenied: showAccessDenied,
+    dashboardForRole: dashboardForRole,
     getSelectedPatient: getSelectedPatient,
     getSelectedPatientId: getSelectedPatientId,
     setSelectedPatientId: setSelectedPatientId,
